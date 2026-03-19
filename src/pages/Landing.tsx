@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import logo from "@/assets/logo.svg";
 import {
-  Shield, Camera, Bug, Lock, FileText, AlertTriangle,
+  Shield, Camera, ShieldAlert, Lock, FileText, AlertTriangle,
   CheckCircle2, XCircle, ArrowRight, Phone, Mail, MapPin, Wifi, Eye, Users
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import TitheTechSection from "@/components/TitheTechSection";
+import OKCHelpingHandsBadge from "@/components/OKCHelpingHandsBadge";
 
 const WroughtIronDivider = () => (
   <div className="flex items-center justify-center my-12 px-4">
