@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import logo from "@/assets/logo.svg";
 import {
-  Shield, Camera, Bug, Lock, FileText, AlertTriangle,
+  Shield, Camera, ShieldAlert, Lock, FileText, AlertTriangle,
   CheckCircle2, XCircle, ArrowRight, Phone, Mail, MapPin, Wifi, Eye, Users
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import TitheTechSection from "@/components/TitheTechSection";
+import OKCHelpingHandsBadge from "@/components/OKCHelpingHandsBadge";
 
 const WroughtIronDivider = () => (
   <div className="flex items-center justify-center my-12 px-4">
@@ -15,7 +17,7 @@ const WroughtIronDivider = () => (
       <path d="M10 12c-2 0-4-1-4-3s2-3 4-3c1 0 2 0 3 1M50 12c2 0 4-1 4-3s-2-3-4-3c-1 0-2 0-3 1" stroke="currentColor" strokeWidth="1.5" fill="none"/>
       <circle cx="6" cy="12" r="1.5"/><circle cx="54" cy="12" r="1.5"/>
     </svg>
-    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
   </div>
 );
 
@@ -26,19 +28,19 @@ const services = [
     description: "Comprehensive network vulnerability assessments following NIST and CIS frameworks. We test your defenses so hackers don't have to.",
   },
   {
-    icon: Camera,
-    title: "Camera & Surveillance",
-    description: "Professional installation of security camera systems with remote monitoring. See what's happening at your business, day or night.",
-  },
-  {
-    icon: Bug,
-    title: "Malware Protection",
+    icon: ShieldAlert,
+    title: "Ransomware Defense",
     description: "State-of-the-art endpoint protection and threat detection. We stop ransomware, viruses, and phishing before they stop your business.",
   },
   {
     icon: Lock,
     title: "Access Control",
     description: "Multi-factor authentication, encrypted networks, and role-based access. Only the right people get in — period.",
+  },
+  {
+    icon: Camera,
+    title: "Camera & Surveillance",
+    description: "Professional installation of security camera systems with remote monitoring. See what's happening at your business, day or night.",
   },
   {
     icon: Wifi,
@@ -223,7 +225,7 @@ const Landing = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <Card key={service.title} className="bg-card border-border hover:border-primary/30 transition-colors group relative">
+            <Card key={service.title} className="bg-card border-border hover:border-primary/40 hover:shadow-[inset_3px_0_0_hsl(var(--primary))] transition-all group relative">
               {service.comingSoon && (
                 <span className="absolute top-3 right-3 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
                   Coming Soon
@@ -276,6 +278,11 @@ const Landing = () => {
           </Card>
         </div>
       </section>
+
+      <WroughtIronDivider />
+
+      {/* Tithe Tech */}
+      <TitheTechSection />
 
       <WroughtIronDivider />
 
@@ -348,6 +355,9 @@ const Landing = () => {
           </CardContent>
         </Card>
       </section>
+
+      {/* OKC Helping Hands */}
+      <OKCHelpingHandsBadge />
 
       {/* Footer */}
       <footer className="border-t border-border py-8">

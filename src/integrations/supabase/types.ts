@@ -14,7 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      tithe_tech_progress: {
+        Row: {
+          current_cycle_count: number
+          id: string
+          total_churches_served: number
+          updated_at: string
+        }
+        Insert: {
+          current_cycle_count?: number
+          id?: string
+          total_churches_served?: number
+          updated_at?: string
+        }
+        Update: {
+          current_cycle_count?: number
+          id?: string
+          total_churches_served?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      tithe_tech_recipients: {
+        Row: {
+          church_name: string
+          city: string
+          created_at: string
+          id: string
+          served_date: string
+          state: string
+          testimonial: string | null
+        }
+        Insert: {
+          church_name: string
+          city: string
+          created_at?: string
+          id?: string
+          served_date: string
+          state?: string
+          testimonial?: string | null
+        }
+        Update: {
+          church_name?: string
+          city?: string
+          created_at?: string
+          id?: string
+          served_date?: string
+          state?: string
+          testimonial?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
