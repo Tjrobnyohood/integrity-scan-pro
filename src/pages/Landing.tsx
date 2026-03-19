@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.svg";
 import {
   Shield, Camera, Bug, Lock, FileText, AlertTriangle,
   CheckCircle2, XCircle, ArrowRight, Phone, Mail, MapPin, Wifi, Eye, Users
