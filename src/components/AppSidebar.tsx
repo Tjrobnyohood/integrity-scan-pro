@@ -1,6 +1,7 @@
-import { Activity, BarChart3, FileText, Settings, Shield, Zap } from "lucide-react";
+import { Activity, BarChart3, FileText, Home, Settings, Shield } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 import {
   Sidebar,
   SidebarContent,
@@ -39,7 +40,7 @@ export function AppSidebar() {
               onMouseEnter={() => setMissionVisible(true)}
               onMouseLeave={() => setMissionVisible(false)}
             >
-              <Zap className="h-6 w-6 text-primary flex-shrink-0" />
+              <img src={logo} alt="Rooted Tech Services" className="h-8 w-8 flex-shrink-0" />
               {!collapsed && (
                 <span className="text-lg font-bold text-foreground tracking-tight">
                   Rooted<span className="text-primary">Tech</span>
