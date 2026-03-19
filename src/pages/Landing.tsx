@@ -356,6 +356,9 @@ const Landing = () => {
         </Card>
       </section>
 
+      {/* OKC Helping Hands */}
+      <OKCHelpingHandsBadge />
+
       {/* Footer */}
       <footer className="border-t border-border py-8">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
