@@ -1,6 +1,7 @@
-import { Activity, BarChart3, FileText, Settings, Shield, Zap } from "lucide-react";
+import { Activity, BarChart3, FileText, Home, Settings, Shield } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 import {
   Sidebar,
   SidebarContent,
