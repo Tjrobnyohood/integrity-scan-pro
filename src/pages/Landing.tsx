@@ -84,7 +84,7 @@ const Landing = () => {
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c-8 0-14 6-14 14 0 5 3 10 7 13-2 3-3 7-3 11 0 6 4 12 10 12s10-6 10-12c0-4-1-8-3-11 4-3 7-8 7-13 0-8-6-14-14-14z' fill='none' stroke='%2300e5ff' stroke-width='0.5'/%3E%3C/svg%3E")`,
         }} />
         <div className="max-w-6xl mx-auto px-4 py-24 text-center relative">
-          <img src={logo} alt="Rooted Tech Services" className="h-28 w-28 mx-auto mb-8" />
+          <img src={logo} alt="Rooted Tech Services" className="h-40 w-40 mx-auto mb-8" />
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             Your Network, <span className="text-gradient-cyan">Rooted in Excellence</span>
           </h1>
