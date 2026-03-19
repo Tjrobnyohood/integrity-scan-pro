@@ -225,7 +225,7 @@ const Landing = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <Card key={service.title} className="bg-card border-border hover:border-primary/30 transition-colors group relative">
+            <Card key={service.title} className="bg-card border-border hover:border-primary/40 hover:shadow-[inset_3px_0_0_hsl(var(--primary))] transition-all group relative">
               {service.comingSoon && (
                 <span className="absolute top-3 right-3 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
                   Coming Soon
