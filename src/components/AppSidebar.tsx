@@ -1,7 +1,7 @@
 import { Activity, BarChart3, FileText, Home, Settings, Shield } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.svg";
 import {
   Sidebar,
   SidebarContent,
