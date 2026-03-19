@@ -28,19 +28,19 @@ const services = [
     description: "Comprehensive network vulnerability assessments following NIST and CIS frameworks. We test your defenses so hackers don't have to.",
   },
   {
-    icon: Camera,
-    title: "Camera & Surveillance",
-    description: "Professional installation of security camera systems with remote monitoring. See what's happening at your business, day or night.",
-  },
-  {
-    icon: Bug,
-    title: "Malware Protection",
+    icon: ShieldAlert,
+    title: "Ransomware Defense",
     description: "State-of-the-art endpoint protection and threat detection. We stop ransomware, viruses, and phishing before they stop your business.",
   },
   {
     icon: Lock,
     title: "Access Control",
     description: "Multi-factor authentication, encrypted networks, and role-based access. Only the right people get in — period.",
+  },
+  {
+    icon: Camera,
+    title: "Camera & Surveillance",
+    description: "Professional installation of security camera systems with remote monitoring. See what's happening at your business, day or night.",
   },
   {
     icon: Wifi,
