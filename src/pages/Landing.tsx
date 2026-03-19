@@ -17,7 +17,7 @@ const WroughtIronDivider = () => (
       <path d="M10 12c-2 0-4-1-4-3s2-3 4-3c1 0 2 0 3 1M50 12c2 0 4-1 4-3s-2-3-4-3c-1 0-2 0-3 1" stroke="currentColor" strokeWidth="1.5" fill="none"/>
       <circle cx="6" cy="12" r="1.5"/><circle cx="54" cy="12" r="1.5"/>
     </svg>
-    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
   </div>
 );
 
