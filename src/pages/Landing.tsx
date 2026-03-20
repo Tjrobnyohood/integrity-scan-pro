@@ -8,6 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import TitheTechSection from "@/components/TitheTechSection";
 import OKCHelpingHandsBadge from "@/components/OKCHelpingHandsBadge";
+import FeaturedPartnersSection from "@/components/FeaturedPartnersSection";
 
 const WroughtIronDivider = () => (
   <div className="flex items-center justify-center my-12 px-4">
