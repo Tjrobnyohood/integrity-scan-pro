@@ -287,6 +287,11 @@ const Landing = () => {
 
       <WroughtIronDivider />
 
+      {/* Featured Partners */}
+      <FeaturedPartnersSection />
+
+      <WroughtIronDivider />
+
       {/* Disclosure & Standards */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-8">
