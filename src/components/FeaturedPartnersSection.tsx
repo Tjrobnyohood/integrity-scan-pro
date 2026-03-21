@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { ExternalLink, Store } from "lucide-react";
+import pinePantryLogo from "@/assets/pine-pantry.jpg";
 
 interface Partner {
   name: string;
@@ -14,6 +15,7 @@ const partners: Partner[] = [
     name: "Pine Pantry",
     description: "Community food pantry serving families across the OKC metro area with dignity and care.",
     type: "nonprofit",
+    image: pinePantryLogo,
   },
 ];
 

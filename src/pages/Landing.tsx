@@ -304,11 +304,19 @@ const Landing = () => {
                 <FileText className="h-5 w-5 text-primary" />
                 Rules of Engagement
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground mb-3">
                 Every audit begins with a signed scope agreement. We define exactly what we test,
                 when we test, and what's off-limits. No surprises. No unauthorized access.
                 Everything documented, everything by the book.
               </p>
+              <a
+                href="/Rooted_Tech_ROE_Template.md"
+                download
+                className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+              >
+                <ArrowRight className="h-3 w-3" />
+                Download ROE Template
+              </a>
             </CardContent>
           </Card>
           <Card className="bg-card border-border">
