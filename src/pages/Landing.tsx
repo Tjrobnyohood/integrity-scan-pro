@@ -375,17 +375,41 @@ const Landing = () => {
 
       {/* Footer */}
       <footer className="border-t border-border py-8">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="Rooted Tech Services" className="h-8 w-8" />
-            <span className="text-sm font-medium">Rooted Tech Services</span>
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="Rooted Tech Services" className="h-8 w-8" />
+              <span className="text-sm font-medium">Rooted Tech Services</span>
+            </div>
+            <nav className="flex items-center gap-6 text-sm text-muted-foreground" aria-label="Footer navigation">
+              <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
+              <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
+              <a href="/Rooted_Tech_ROE_Template.md" download className="hover:text-primary transition-colors">ROE Template</a>
+            </nav>
           </div>
-          <p className="text-xs text-muted-foreground/40 select-none" title="Colossians 3:23">
-            Col 3:23 — Whatever you do, work at it with all your heart.
-          </p>
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Rooted Tech Services. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-border/50">
+            <p className="text-xs text-muted-foreground">
+              © {new Date().getFullYear()} Rooted Tech Services. All rights reserved. Oklahoma City, OK.
+            </p>
+            {/* Easter egg: hover to reveal mission */}
+            <p
+              className="text-xs text-muted-foreground/40 select-none cursor-default transition-all duration-700 hover:text-primary/60 hover:tracking-wide"
+              title="Colossians 3:23 — Whatever you do, work at it with all your heart, as working for the Lord."
+            >
+              Col 3:23 · Soli Deo Gloria
+            </p>
+            {/* Hidden ASCII easter egg — inspect element to find */}
+            {/* 
+              ██████╗  ██████╗  ██████╗ ████████╗███████╗██████╗ 
+              ██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗
+              ██████╔╝██║   ██║██║   ██║   ██║   █████╗  ██║  ██║
+              ██╔══██╗██║   ██║██║   ██║   ██║   ██╔══╝  ██║  ██║
+              ██║  ██║╚██████╔╝╚██████╔╝   ██║   ███████╗██████╔╝
+              ╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═════╝ 
+              "The Lord is my rock and my fortress." — Psalm 18:2
+            */}
+          </div>
         </div>
       </footer>
     </div>
