@@ -24,6 +24,7 @@ const App = () => (
           <Route path="/proposals" element={<Proposals />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/roe-generator" element={<ROEGenerator />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
