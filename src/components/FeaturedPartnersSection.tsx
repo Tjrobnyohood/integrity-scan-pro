@@ -10,6 +10,20 @@ interface Partner {
   url?: string;
 }
 
+/**
+ * ╔══════════════════════════════════════════════════════╗
+ * ║  FEATURED PARTNERS — ADD NEW ENTRIES BELOW          ║
+ * ╠══════════════════════════════════════════════════════╣
+ * ║  1. Import logo: import logo from "@/assets/X.jpg"  ║
+ * ║  2. Add object to the array below                   ║
+ * ║  3. Fields:                                         ║
+ * ║     name:        Business/org name                  ║
+ * ║     description: 1-2 sentence pitch                 ║
+ * ║     type:        "business" | "nonprofit"           ║
+ * ║     image:       imported logo (optional)           ║
+ * ║     url:         website link (optional)            ║
+ * ╚══════════════════════════════════════════════════════╝
+ */
 const partners: Partner[] = [
   {
     name: "Pine Pantry",
@@ -17,6 +31,14 @@ const partners: Partner[] = [
     type: "nonprofit",
     image: pinePantryLogo,
   },
+  // --- TEMPLATE: Copy, uncomment, and fill in ---
+  // {
+  //   name: "Business Name",
+  //   description: "What they do and why they matter.",
+  //   type: "business",
+  //   image: importedLogo,
+  //   url: "https://example.com",
+  // },
 ];
 
 const FeaturedPartnersSection = () => {
