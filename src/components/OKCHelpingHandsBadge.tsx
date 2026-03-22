@@ -1,3 +1,23 @@
+/**
+ * ╔══════════════════════════════════════════════════════════════════╗
+ * ║  OKC HELPING HANDS BADGE                                       ║
+ * ╠══════════════════════════════════════════════════════════════════╣
+ * ║  PURPOSE:                                                      ║
+ * ║  Partner badge linking to the OKC Helping Hands nonprofit site. ║
+ * ║  Positioned near the footer on the landing page.               ║
+ * ║  Shows solidarity with the nonprofit's mission to protect      ║
+ * ║  vulnerable populations in the Oklahoma City metro.            ║
+ * ╠══════════════════════════════════════════════════════════════════╣
+ * ║  LINKS TO: https://okc-helping-hands.vercel.app                ║
+ * ║  Opens in new tab (target="_blank" with noopener noreferrer)   ║
+ * ╠══════════════════════════════════════════════════════════════════╣
+ * ║  STYLING:                                                      ║
+ * ║  - Subtle bordered card with primary/20 border                 ║
+ * ║  - Heart icon with hover scale animation                       ║
+ * ║  - Responsive: stacks vertically on mobile, horizontal on sm+  ║
+ * ╚══════════════════════════════════════════════════════════════════╝
+ */
+
 import { Heart } from "lucide-react";
 
 const OKCHelpingHandsBadge = () => (

@@ -1,3 +1,24 @@
+/**
+ * ╔══════════════════════════════════════════════════════════════════╗
+ * ║  APP.TSX — Root Application Component & Route Configuration    ║
+ * ╠══════════════════════════════════════════════════════════════════╣
+ * ║  ROUTES:                                                       ║
+ * ║  /              → Landing.tsx     (public landing page)        ║
+ * ║  /dashboard     → Index.tsx       (client portal / dashboard)  ║
+ * ║  /proposals     → Proposals.tsx   (proposal management)        ║
+ * ║  /privacy       → PrivacyPolicy   (legal: privacy policy)     ║
+ * ║  /terms         → TermsOfService  (legal: terms of service)   ║
+ * ║  /roe-generator → ROEGenerator    (ROE form → .md download)   ║
+ * ║  *              → NotFound.tsx    (404 page)                   ║
+ * ╠══════════════════════════════════════════════════════════════════╣
+ * ║  PROVIDERS (wrapping all routes):                              ║
+ * ║  - QueryClientProvider: React Query for data fetching/caching  ║
+ * ║  - TooltipProvider: Radix tooltip context                      ║
+ * ║  - Toaster + Sonner: Toast notification systems                ║
+ * ║  - BrowserRouter: React Router for client-side routing         ║
+ * ╚══════════════════════════════════════════════════════════════════╝
+ */
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -19,12 +40,17 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          {/* Public pages */}
           <Route path="/" element={<Landing />} />
-          <Route path="/dashboard" element={<Index />} />
-          <Route path="/proposals" element={<Proposals />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/roe-generator" element={<ROEGenerator />} />
+
+          {/* Internal / authenticated pages */}
+          <Route path="/dashboard" element={<Index />} />
+          <Route path="/proposals" element={<Proposals />} />
+
+          {/* 404 fallback */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
