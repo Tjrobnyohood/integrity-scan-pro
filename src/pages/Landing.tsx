@@ -1,3 +1,35 @@
+/**
+ * ╔══════════════════════════════════════════════════════════════════╗
+ * ║  LANDING PAGE — Rooted Tech Services                           ║
+ * ║  Main public-facing page for the business                      ║
+ * ╠══════════════════════════════════════════════════════════════════╣
+ * ║  SECTIONS (in order):                                          ║
+ * ║  1. Sticky Nav        — Logo, Client Portal link, CTA          ║
+ * ║  2. Hero              — Brand logo (large), tagline, CTAs      ║
+ * ║  3. SB 626 Explainer  — Oklahoma data breach law breakdown     ║
+ * ║  4. Services Grid     — 6 service cards (one "Coming Soon")    ║
+ * ║  5. "Built for OK"    — 3 value-prop cards                     ║
+ * ║  6. Tithe Tech        — Community giveback tracker (component)  ║
+ * ║  7. Featured Partners — Business/nonprofit showcase (component) ║
+ * ║  8. Standards & Ethics— ROE + Full Disclosure cards            ║
+ * ║  9. CTA / Contact     — Final call-to-action                   ║
+ * ║ 10. OKC Helping Hands — Partner badge (component)              ║
+ * ║ 11. Footer            — Legal links, easter egg                ║
+ * ╠══════════════════════════════════════════════════════════════════╣
+ * ║  DESIGN SYSTEM:                                                ║
+ * ║  - All colors use HSL CSS vars from index.css                  ║
+ * ║  - glow-cyan / text-gradient-cyan = custom utility classes     ║
+ * ║  - WroughtIronDivider = decorative SVG section separator       ║
+ * ║  - Cards use bg-card, border-border, text-foreground tokens    ║
+ * ╠══════════════════════════════════════════════════════════════════╣
+ * ║  TO ADD A NEW SECTION:                                         ║
+ * ║  1. Create section JSX between <WroughtIronDivider /> tags     ║
+ * ║  2. Use max-w-6xl mx-auto px-4 py-12 for consistent spacing   ║
+ * ║  3. Use <Card> + <CardContent> for content blocks              ║
+ * ║  4. Or extract to a component in src/components/               ║
+ * ╚══════════════════════════════════════════════════════════════════╝
+ */
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import logo from "@/assets/logo.svg";
@@ -10,6 +42,12 @@ import TitheTechSection from "@/components/TitheTechSection";
 import OKCHelpingHandsBadge from "@/components/OKCHelpingHandsBadge";
 import FeaturedPartnersSection from "@/components/FeaturedPartnersSection";
 
+/**
+ * WroughtIronDivider — Decorative section separator
+ * SVG-based "wrought iron gate" motif for Southern/Oklahoma aesthetic.
+ * Uses primary color at low opacity for subtlety.
+ * Placed between major sections to break up content.
+ */
 const WroughtIronDivider = () => (
   <div className="flex items-center justify-center my-12 px-4">
     <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
@@ -22,6 +60,19 @@ const WroughtIronDivider = () => (
   </div>
 );
 
+/**
+ * services[] — Service card data
+ * ╔════════════════════════════════════════════════════════╗
+ * ║  TO ADD A NEW SERVICE:                                ║
+ * ║  1. Import icon from lucide-react at top of file      ║
+ * ║  2. Add object to this array                          ║
+ * ║  3. Fields:                                           ║
+ * ║     icon:        Lucide icon component                ║
+ * ║     title:       Service name (short)                 ║
+ * ║     description: 1-2 sentence pitch                   ║
+ * ║     comingSoon:  (optional) true = "Coming Soon" badge ║
+ * ╚════════════════════════════════════════════════════════╝
+ */
 const services = [
   {
     icon: Shield,
@@ -59,7 +110,14 @@ const services = [
 const Landing = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
+
+      {/* ============================================================
+       *  SECTION 1: STICKY NAVIGATION BAR
+       *  - Logo + brand name on the left
+       *  - "Client Portal" links to /dashboard (internal tool)
+       *  - "Get Protected" CTA scrolls to #contact section
+       *  - backdrop-blur-md for frosted glass effect
+       * ============================================================ */}
       <nav className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -79,10 +137,17 @@ const Landing = () => {
         </div>
       </nav>
 
-      {/* Hero */}
+      {/* ============================================================
+       *  SECTION 2: HERO
+       *  - Large logo (h-[30rem]) — scaled up per user request
+       *  - Main tagline with text-gradient-cyan utility
+       *  - Subtle paisley SVG background pattern (Oklahoma aesthetic)
+       *  - Two CTA buttons: compliance check + services
+       * ============================================================ */}
       <section className="relative overflow-hidden">
+        {/* Gradient overlay at top */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        {/* Subtle paisley-inspired background pattern */}
+        {/* Subtle paisley-inspired background pattern — Oklahoma/Southern motif */}
         <div className="absolute inset-0 opacity-[0.02]" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c-8 0-14 6-14 14 0 5 3 10 7 13-2 3-3 7-3 11 0 6 4 12 10 12s10-6 10-12c0-4-1-8-3-11 4-3 7-8 7-13 0-8-6-14-14-14z' fill='none' stroke='%2300e5ff' stroke-width='0.5'/%3E%3C/svg%3E")`,
         }} />
@@ -116,7 +181,14 @@ const Landing = () => {
 
       <WroughtIronDivider />
 
-      {/* SB 626 Section */}
+      {/* ============================================================
+       *  SECTION 3: OKLAHOMA SENATE BILL 626 EXPLAINER
+       *  - Plain-English breakdown of OK's data breach law (eff. Jan 2026)
+       *  - "Safe Harbor" explanation — why compliance = protection
+       *  - "Without It" card — fines up to $150k, AG notification, lawsuits
+       *  - Side-by-side comparison: Compliant vs Non-Compliant
+       *  - Key selling point: positions Rooted Tech as the compliance partner
+       * ============================================================ */}
       <section id="sb626" className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <span className="inline-block px-3 py-1 rounded-full bg-destructive/10 text-destructive text-sm font-medium mb-4">
@@ -132,6 +204,7 @@ const Landing = () => {
           </p>
         </div>
 
+        {/* Safe Harbor vs No Protection — two-card explainer */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <Card className="bg-card border-border">
             <CardContent className="p-6">
@@ -175,8 +248,9 @@ const Landing = () => {
           </Card>
         </div>
 
-        {/* Compliance comparison */}
+        {/* Compliance comparison — visual checklist format */}
         <div className="grid md:grid-cols-2 gap-6">
+          {/* Compliant card — green accents, check icons */}
           <Card className="bg-card border-primary/20 border-2">
             <CardContent className="p-6">
               <h4 className="font-bold text-success flex items-center gap-2 mb-4">
@@ -194,6 +268,7 @@ const Landing = () => {
             </CardContent>
           </Card>
 
+          {/* Non-compliant card — red accents, X icons */}
           <Card className="bg-card border-destructive/20 border-2">
             <CardContent className="p-6">
               <h4 className="font-bold text-destructive flex items-center gap-2 mb-4">
@@ -215,7 +290,14 @@ const Landing = () => {
 
       <WroughtIronDivider />
 
-      {/* Services */}
+      {/* ============================================================
+       *  SECTION 4: SERVICES GRID
+       *  - 6 service cards in 3-col grid (2-col on tablet, 1-col mobile)
+       *  - Each card: icon, title, description
+       *  - Hover effect: left cyan border (inset shadow trick)
+       *  - "Coming Soon" badge for unreleased services (OSINT)
+       *  - Data driven by services[] array above
+       * ============================================================ */}
       <section id="services" className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Do</h2>
@@ -227,6 +309,7 @@ const Landing = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
             <Card key={service.title} className="bg-card border-border hover:border-primary/40 hover:shadow-[inset_3px_0_0_hsl(var(--primary))] transition-all group relative">
+              {/* "Coming Soon" badge — only shows if service.comingSoon is true */}
               {service.comingSoon && (
                 <span className="absolute top-3 right-3 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
                   Coming Soon
@@ -244,7 +327,12 @@ const Landing = () => {
 
       <WroughtIronDivider />
 
-      {/* Why Rural Communities */}
+      {/* ============================================================
+       *  SECTION 5: "BUILT FOR OKLAHOMA" — VALUE PROPOSITIONS
+       *  - 3 cards: Plain English, On-Site Service, Integrity First
+       *  - Differentiators for rural OK market
+       *  - Icons centered, text centered
+       * ============================================================ */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -282,17 +370,36 @@ const Landing = () => {
 
       <WroughtIronDivider />
 
-      {/* Tithe Tech */}
+      {/* ============================================================
+       *  SECTION 6: TITHE TECH — COMMUNITY GIVEBACK
+       *  - Component: src/components/TitheTechSection.tsx
+       *  - Progress ring: tracks audits toward next free church service
+       *  - "Wall of Blessing": grid of recipient churches
+       *  - Data from Supabase: tithe_tech_progress + tithe_tech_recipients
+       *  - Every 10 paid audits = 1 free audit for a church/nonprofit
+       * ============================================================ */}
       <TitheTechSection />
 
       <WroughtIronDivider />
 
-      {/* Featured Partners */}
+      {/* ============================================================
+       *  SECTION 7: FEATURED PARTNERS — COMMUNITY SPOTLIGHT
+       *  - Component: src/components/FeaturedPartnersSection.tsx
+       *  - Showcases small businesses and nonprofits we work with
+       *  - To add partners: edit the partners[] array in that file
+       *  - Supports: name, description, type (business/nonprofit), image, url
+       * ============================================================ */}
       <FeaturedPartnersSection />
 
       <WroughtIronDivider />
 
-      {/* Disclosure & Standards */}
+      {/* ============================================================
+       *  SECTION 8: STANDARDS & ETHICS
+       *  - Rules of Engagement card — links to ROE template download + generator
+       *  - Full Disclosure card — NIST/CIS/OWASP framework commitment
+       *  - ROE Generator at /roe-generator: form → fills template → downloads .md
+       *  - .md output designed for pandoc + LaTeX pipeline with branding
+       * ============================================================ */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold mb-4">Our Standards & Ethics</h2>
@@ -310,6 +417,7 @@ const Landing = () => {
                 Everything documented, everything by the book.
               </p>
               <div className="flex flex-wrap gap-3">
+                {/* Direct download of the blank ROE markdown template */}
                 <a
                   href="/Rooted_Tech_ROE_Template.md"
                   download
@@ -318,6 +426,7 @@ const Landing = () => {
                   <ArrowRight className="h-3 w-3" />
                   Download ROE Template
                 </a>
+                {/* Link to the interactive ROE form generator at /roe-generator */}
                 <Link
                   to="/roe-generator"
                   className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
@@ -346,7 +455,12 @@ const Landing = () => {
 
       <WroughtIronDivider />
 
-      {/* CTA / Contact */}
+      {/* ============================================================
+       *  SECTION 9: CALL TO ACTION / CONTACT
+       *  - Final CTA with glow-cyan card effect
+       *  - "Schedule a Free Audit" + "Contact Us" buttons
+       *  - Location badge (OKC) + framework compliance badge
+       * ============================================================ */}
       <section id="contact" className="max-w-6xl mx-auto px-4 py-16">
         <Card className="bg-card border-primary/20 glow-cyan">
           <CardContent className="p-8 md:p-12 text-center">
@@ -379,10 +493,24 @@ const Landing = () => {
         </Card>
       </section>
 
-      {/* OKC Helping Hands */}
+      {/* ============================================================
+       *  SECTION 10: OKC HELPING HANDS BADGE
+       *  - Component: src/components/OKCHelpingHandsBadge.tsx
+       *  - Links to https://okc-helping-hands.vercel.app
+       *  - "Dedicated to protecting our most vulnerable populations"
+       *  - Heart icon with hover scale animation
+       * ============================================================ */}
       <OKCHelpingHandsBadge />
 
-      {/* Footer */}
+      {/* ============================================================
+       *  SECTION 11: FOOTER
+       *  - Logo + brand name
+       *  - Nav links: Privacy Policy, Terms of Service, Contact, ROE Template
+       *  - Copyright with dynamic year
+       *  - Easter egg: "Col 3:23 · Soli Deo Gloria" — glows on hover
+       *    (Colossians 3:23 — "Whatever you do, work at it with all your heart")
+       *  - Hidden ASCII art in source: Psalm 18:2 fortress
+       * ============================================================ */}
       <footer className="border-t border-border py-8">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
@@ -401,15 +529,14 @@ const Landing = () => {
             <p className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} Rooted Tech Services. All rights reserved. Oklahoma City, OK.
             </p>
-            {/* Easter egg: hover to reveal mission */}
+            {/* Easter egg: hover to reveal mission — Colossians 3:23 */}
             <p
               className="text-xs text-muted-foreground/40 select-none cursor-default transition-all duration-700 hover:text-primary/60 hover:tracking-wide"
               title="Colossians 3:23 — Whatever you do, work at it with all your heart, as working for the Lord."
             >
               Col 3:23 · Soli Deo Gloria
             </p>
-            {/* Hidden ASCII easter egg — inspect element to find */}
-            {/* 
+            {/* Hidden ASCII easter egg — inspect element to find
               ██████╗  ██████╗  ██████╗ ████████╗███████╗██████╗ 
               ██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗
               ██████╔╝██║   ██║██║   ██║   ██║   █████╗  ██║  ██║
