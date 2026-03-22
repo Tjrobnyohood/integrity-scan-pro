@@ -309,14 +309,23 @@ const Landing = () => {
                 when we test, and what's off-limits. No surprises. No unauthorized access.
                 Everything documented, everything by the book.
               </p>
-              <a
-                href="/Rooted_Tech_ROE_Template.md"
-                download
-                className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
-              >
-                <ArrowRight className="h-3 w-3" />
-                Download ROE Template
-              </a>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="/Rooted_Tech_ROE_Template.md"
+                  download
+                  className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                >
+                  <ArrowRight className="h-3 w-3" />
+                  Download ROE Template
+                </a>
+                <Link
+                  to="/roe-generator"
+                  className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                >
+                  <FileText className="h-3 w-3" />
+                  Generate Custom ROE
+                </Link>
+              </div>
             </CardContent>
           </Card>
           <Card className="bg-card border-border">
