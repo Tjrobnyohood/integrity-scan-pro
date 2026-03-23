@@ -30,7 +30,9 @@ import Proposals from "./pages/Proposals.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import TermsOfService from "./pages/TermsOfService.tsx";
 import ROEGenerator from "./pages/ROEGenerator.tsx";
+import Login from "./pages/Login.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -45,10 +47,11 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/roe-generator" element={<ROEGenerator />} />
+          <Route path="/login" element={<Login />} />
 
           {/* Internal / authenticated pages */}
-          <Route path="/dashboard" element={<Index />} />
-          <Route path="/proposals" element={<Proposals />} />
+          <Route path="/dashboard" element={<ProtectedRoute><Index /></ProtectedRoute>} />
+          <Route path="/proposals" element={<ProtectedRoute><Proposals /></ProtectedRoute>} />
 
           {/* 404 fallback */}
           <Route path="*" element={<NotFound />} />
