@@ -2,7 +2,7 @@
 title: "Rules of Engagement"
 subtitle: "Rooted Tech Services — Security Assessment Agreement"
 author: "Rooted Tech Services"
-date: \today
+date: "2025-01-01"
 geometry: margin=1in
 fontsize: 12pt
 ---
