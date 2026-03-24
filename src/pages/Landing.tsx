@@ -374,6 +374,26 @@ const Landing = () => {
       <WroughtIronDivider />
 
       {/* ============================================================
+       *  SECTION 5.5: IMPACT STATS — ANIMATED COUNTERS
+       *  - Component: src/components/ImpactStats.tsx
+       *  - Animated count-up numbers triggered on scroll into view
+       *  - Stats: issues resolved, devices secured, workshops, uptime
+       *  - To update: edit stats[] array in ImpactStats.tsx
+       * ============================================================ */}
+      <ImpactStats />
+
+      <WroughtIronDivider />
+
+      {/* ============================================================
+       *  SECTION 5.6: CYBERSECURITY WORKSHOPS
+       *  - Component: src/components/CybersecurityWorkshops.tsx
+       *  - Workshop topics: phishing, passwords, ransomware, SB 626
+       *  - Each card shows audience badge (All Staff, Business Owners, etc.)
+       *  - To add workshops: edit workshops[] array in component
+       * ============================================================ */}
+      <CybersecurityWorkshops />
+
+      {/* ============================================================
        *  SECTION 6: TITHE TECH — COMMUNITY GIVEBACK
        *  - Component: src/components/TitheTechSection.tsx
        *  - Progress ring: tracks audits toward next free church service
