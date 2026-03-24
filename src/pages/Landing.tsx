@@ -41,6 +41,9 @@ import { Link } from "react-router-dom";
 import TitheTechSection from "@/components/TitheTechSection";
 import OKCHelpingHandsBadge from "@/components/OKCHelpingHandsBadge";
 import FeaturedPartnersSection from "@/components/FeaturedPartnersSection";
+import ImpactStats from "@/components/ImpactStats";
+import CybersecurityWorkshops from "@/components/CybersecurityWorkshops";
+import { Heart } from "lucide-react";
 
 /**
  * WroughtIronDivider — Decorative section separator
@@ -371,6 +374,26 @@ const Landing = () => {
       <WroughtIronDivider />
 
       {/* ============================================================
+       *  SECTION 5.5: IMPACT STATS — ANIMATED COUNTERS
+       *  - Component: src/components/ImpactStats.tsx
+       *  - Animated count-up numbers triggered on scroll into view
+       *  - Stats: issues resolved, devices secured, workshops, uptime
+       *  - To update: edit stats[] array in ImpactStats.tsx
+       * ============================================================ */}
+      <ImpactStats />
+
+      <WroughtIronDivider />
+
+      {/* ============================================================
+       *  SECTION 5.6: CYBERSECURITY WORKSHOPS
+       *  - Component: src/components/CybersecurityWorkshops.tsx
+       *  - Workshop topics: phishing, passwords, ransomware, SB 626
+       *  - Each card shows audience badge (All Staff, Business Owners, etc.)
+       *  - To add workshops: edit workshops[] array in component
+       * ============================================================ */}
+      <CybersecurityWorkshops />
+
+      {/* ============================================================
        *  SECTION 6: TITHE TECH — COMMUNITY GIVEBACK
        *  - Component: src/components/TitheTechSection.tsx
        *  - Progress ring: tracks audits toward next free church service
@@ -524,6 +547,22 @@ const Landing = () => {
               <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
               <a href="/Rooted_Tech_ROE_Template.md" download className="hover:text-primary transition-colors">ROE Template</a>
             </nav>
+          </div>
+          {/* ── GoFundMe / Favorite Charity CTA ──
+           *  Links to the GoFundMe campaign for protecting rural OK businesses
+           *  Heart icon with hover glow for warmth
+           *  Update the href below to change the campaign link */}
+          <div className="flex items-center justify-center gap-2 py-4 border-t border-border/50">
+            <Heart className="h-4 w-4 text-destructive" />
+            <a
+              href="https://www.gofundme.com/f/protecting-rural-oklahoma-businesses"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Support our mission — Protecting Rural Oklahoma Businesses
+            </a>
+            <Heart className="h-4 w-4 text-destructive" />
           </div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-border/50">
             <p className="text-xs text-muted-foreground">
