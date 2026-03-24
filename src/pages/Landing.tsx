@@ -548,6 +548,22 @@ const Landing = () => {
               <a href="/Rooted_Tech_ROE_Template.md" download className="hover:text-primary transition-colors">ROE Template</a>
             </nav>
           </div>
+          {/* ── GoFundMe / Favorite Charity CTA ──
+           *  Links to the GoFundMe campaign for protecting rural OK businesses
+           *  Heart icon with hover glow for warmth
+           *  Update the href below to change the campaign link */}
+          <div className="flex items-center justify-center gap-2 py-4 border-t border-border/50">
+            <Heart className="h-4 w-4 text-destructive" />
+            <a
+              href="https://www.gofundme.com/f/protecting-rural-oklahoma-businesses"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Support our mission — Protecting Rural Oklahoma Businesses
+            </a>
+            <Heart className="h-4 w-4 text-destructive" />
+          </div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-border/50">
             <p className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} Rooted Tech Services. All rights reserved. Oklahoma City, OK.
