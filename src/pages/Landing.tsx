@@ -41,6 +41,9 @@ import { Link } from "react-router-dom";
 import TitheTechSection from "@/components/TitheTechSection";
 import OKCHelpingHandsBadge from "@/components/OKCHelpingHandsBadge";
 import FeaturedPartnersSection from "@/components/FeaturedPartnersSection";
+import ImpactStats from "@/components/ImpactStats";
+import CybersecurityWorkshops from "@/components/CybersecurityWorkshops";
+import { Heart } from "lucide-react";
 
 /**
  * WroughtIronDivider — Decorative section separator
