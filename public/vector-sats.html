@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Vector Sats</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  body { margin:0; background:#0a0a0a; color:#0f0; font-family:'Press Start 2P', monospace; overflow:hidden; }
+  canvas { display:block; margin:0 auto; background:radial-gradient(circle at center, #112211, #000); }
+  #header { position:absolute; top:0; left:0; right:0; z-index:30; background:rgba(10,10,10,0.95); border-bottom:3px solid #f80; padding:8px 0; box-shadow:0 0 15px #f80; text-align:center; }
+  #header h1 { margin:0; font-size:18px; color:#ff0; text-shadow:0 0 12px #ff0; }
+  #ui { position:absolute; top:68px; left:15px; right:15px; z-index:10; background:rgba(0,0,0,0.9); border:2px solid #0f0; border-radius:12px; padding:12px; box-shadow:0 0 20px #0f0; text-align:center; }
+  .stat { display:inline-block; margin:0 10px; }
+  .label { font-size:10px; opacity:0.7; }
+  .value { font-size:22px; color:#ff0; text-shadow:0 0 10px #ff0; }
+  #multi-toggle { position:absolute; top:130px; left:15px; right:15px; background:#0ff; color:#000; padding:12px; border-radius:8px; text-align:center; font-weight:bold; cursor:pointer; font-family:'Press Start 2P', monospace; font-size:12px; border:none; }
+  #tip-btn { position:absolute; top:175px; left:15px; right:15px; background:#f80; color:#000; padding:12px; border-radius:8px; text-align:center; font-weight:bold; cursor:pointer; font-family:'Press Start 2P', monospace; font-size:12px; border:none; }
+  #status { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); background:#f80; color:#000; padding:10px 20px; border-radius:30px; font-size:15px; box-shadow:0 0 20px #f80; display:none; }
+  #howItWorks { position:absolute; top:0; left:0; right:0; bottom:0; z-index:50; background:rgba(0,0,0,0.97); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; line-height:1.8; font-size:11px; }
+  #howItWorks button { margin-top:30px; padding:18px 50px; font-size:18px; background:#f80; color:#000; border:none; border-radius:8px; cursor:pointer; font-family:'Press Start 2P', monospace; }
+</style>
+</head>
+<body>
+
+<div id="header"><h1>⚡ VECTOR SATS ⚡</h1></div>
+
+<div id="ui">
+  <span class="stat"><span class="label">SATS</span><br><span class="value" id="sats">0</span></span>
+  <span class="stat"><span class="label">FIB</span><br><span class="value" id="fib">1×</span></span>
+</div>
+
+<button id="multi-toggle" onclick="toggleMulti()">🔴 MULTIPLAYER OFF</button>
+<button id="tip-btn" onclick="tipTJ()">⚡ TIP TJ (real sats!)</button>
+
+<canvas id="c"></canvas>
+<div id="status"></div>
+
+<div id="howItWorks">
+  <h2 style="color:#ff0;">HEY, THIS IS TJ</h2>
+  <p>The game is for charity.</p>
+  <p>It's not supposed to have ads.</p>
+  <p>It runs solely on tips.</p>
+  <br>
+  <p>Through hard work and dedication.</p>
+  <br>
+  <p>If the top player hits x amount of money once a month we do payout.</p>
+  <br>
+  <p>But if they needed anything or even just a person to talk to they can reach out.</p>
+  <br>
+  <p>Leave a personal email.</p>
+  <br>
+  <p style="color:#f80; font-size:14px;">LOVE TJ</p>
+  <button onclick="document.getElementById('howItWorks').style.display='none'">GOT IT - LET'S PLAY</button>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let sats = 0;
+let fibLevel = 1;
+let fibSequence = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55];
+let multiOn = false;
+let vectors = [];
+
+function newVector() {
+  const size = 20 + Math.random() * 30;
+  return {
+    x: Math.random() * canvas.width,
+    y: canvas.height + size,
+    vx: (Math.random() - 0.5) * 4,
+    vy: -(6 + Math.random() * 6),
+    size: size,
+    color: ['#0f0', '#0ff', '#ff0', '#f80', '#f0f'][Math.floor(Math.random() * 5)],
+    sliced: false,
+    rotation: Math.random() * Math.PI * 2,
+    rotSpeed: (Math.random() - 0.5) * 0.1
+  };
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw grid lines for retro feel
+  ctx.strokeStyle = 'rgba(0, 255, 0, 0.05)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i < canvas.width; i += 40) {
+    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
+  }
+  for (let i = 0; i < canvas.height; i += 40) {
+    ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); ctx.stroke();
+  }
+
+  vectors.forEach((v, i) => {
+    if (v.sliced) return;
+    v.x += v.vx;
+    v.y += v.vy;
+    v.vy += 0.15; // gravity
+    v.rotation += v.rotSpeed;
+
+    ctx.save();
+    ctx.translate(v.x, v.y);
+    ctx.rotate(v.rotation);
+    ctx.shadowColor = v.color;
+    ctx.shadowBlur = 15;
+
+    // Draw diamond/vector shape
+    ctx.beginPath();
+    ctx.moveTo(0, -v.size);
+    ctx.lineTo(v.size * 0.6, 0);
+    ctx.lineTo(0, v.size);
+    ctx.lineTo(-v.size * 0.6, 0);
+    ctx.closePath();
+    ctx.fillStyle = v.color;
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Inner glow
+    ctx.beginPath();
+    ctx.moveTo(0, -v.size * 0.5);
+    ctx.lineTo(v.size * 0.3, 0);
+    ctx.lineTo(0, v.size * 0.5);
+    ctx.lineTo(-v.size * 0.3, 0);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.fill();
+
+    ctx.restore();
+
+    // Reset if off screen
+    if (v.y > canvas.height + v.size * 2) {
+      vectors[i] = newVector();
+    }
+  });
+
+  requestAnimationFrame(draw);
+}
+
+function slice(e) {
+  const rect = canvas.getBoundingClientRect();
+  const touch = e.touches ? e.touches[0] : e;
+  const mx = touch.clientX - rect.left;
+  const my = touch.clientY - rect.top;
+
+  vectors.forEach((v, i) => {
+    if (v.sliced) return;
+    const dx = mx - v.x;
+    const dy = my - v.y;
+    if (Math.sqrt(dx * dx + dy * dy) < v.size) {
+      v.sliced = true;
+      const fibMult = fibSequence[Math.min(fibLevel - 1, fibSequence.length - 1)];
+      const earned = fibMult * (multiOn ? 2 : 1);
+      sats += earned;
+      document.getElementById('sats').textContent = sats;
+
+      // Show slash effect
+      showStatus('+' + earned + ' sats!');
+
+      // Spawn new one
+      setTimeout(() => { vectors[i] = newVector(); }, 300);
+
+      // Level up fibonacci
+      if (sats > fibLevel * 50) {
+        fibLevel = Math.min(fibLevel + 1, fibSequence.length);
+        document.getElementById('fib').textContent = fibSequence[fibLevel - 1] + '×';
+      }
+    }
+  });
+}
+
+function showStatus(text) {
+  const el = document.getElementById('status');
+  el.textContent = text;
+  el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 800);
+}
+
+function toggleMulti() {
+  multiOn = !multiOn;
+  document.getElementById('multi-toggle').textContent = multiOn ? '🟢 MULTIPLAYER ON' : '🔴 MULTIPLAYER OFF';
+  document.getElementById('multi-toggle').style.background = multiOn ? '#0f0' : '#0ff';
+}
+
+function tipTJ() {
+  const address = "tj@ln.bitcoin-21.org";
+  const msg = "Thanks for playing!\nEvery sat helps me get back to my kids 💪";
+  if (confirm(msg + "\n\nSend sats to TJ at:\n" + address)) {
+    window.location = "lightning:" + address;
+  }
+}
+
+canvas.addEventListener('touchstart', slice);
+canvas.addEventListener('mousedown', slice);
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+for (let i = 0; i < 12; i++) vectors.push(newVector());
+draw();
+
+document.getElementById('howItWorks').style.display = 'flex';
+</script>
+</body>
+</html>
